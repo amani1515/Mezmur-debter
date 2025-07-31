@@ -60,7 +60,7 @@
                         <Link :href="route('admin.subcategories')" class="flex items-center px-4 py-4 text-amber-800 hover:bg-gradient-to-r hover:from-yellow-200 hover:to-amber-300 hover:text-amber-900 rounded-lg font-semibold transition-all">
                             <span class="text-sm">Sub Categories</span>
                         </Link>
-                        <Link href="#" class="flex items-center px-4 py-4 text-amber-800 hover:bg-gradient-to-r hover:from-yellow-200 hover:to-amber-300 hover:text-amber-900 rounded-lg font-semibold transition-all">
+                        <Link :href="route('admin.poems')" class="flex items-center px-4 py-4 text-amber-800 hover:bg-gradient-to-r hover:from-yellow-200 hover:to-amber-300 hover:text-amber-900 rounded-lg font-semibold transition-all">
                             <span class="text-sm">Poems</span>
                         </Link>
                     </div>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Structured Poem Registration Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .verse { border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 5px; }
+        .main-verse { background: #f0f8ff; font-weight: bold; margin-bottom: 10px; }
+        .sub-verse { background: #f9f9f9; margin: 5px 0 5px 20px; padding: 8px; border-left: 3px solid #ccc; }
+        button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        input, textarea, select { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 3px; }
+        .add-btn { background: #28a745; padding: 5px 10px; font-size: 12px; }
+        .remove-btn { background: #dc3545; padding: 5px 10px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>Structured Poem Registration Tool</h1>
+    
+    <form id="poemForm">
+        <div>
+            <label>Title:</label>
+            <input type="text" id="title" required>
+        </div>
+        
+        <div>
+            <label>Author:</label>
+            <input type="text" id="author" placeholder="Optional">
+        </div>
+        
+        <div>
+            <label>Registered By:</label>
+            <input type="text" id="registered_by" placeholder="Optional">
+        </div>
+        
+        <div>
+            <label>Category:</label>
+            <select id="category" required>
+                <option value="">Select Category</option>
+            </select>
+        </div>
+        
+        <div>
+            <label>Subcategory:</label>
+            <select id="subcategory" required>
+                <option value="">Select Subcategory</option>
+            </select>
+        </div>
+        
+        <h3>Verses</h3>
+        <div id="verses"></div>
+        <button type="button" onclick="addVerse()" class="add-btn">Add Verse</button>
+        
+        <br><br>
+        <button type="submit">Submit Structured Poem</button>
+    </form>
+
+    <script>
+        let verseCount = 0;
+        let categories = [];
+
+        // Load categories
+        fetch('/api/categories')
+            .then(response => response.json())
+            .then(data => {
+                categories = data;
+                const categorySelect = document.getElementById('category');
+                data.forEach(cat => {
+                    categorySelect.innerHTML += `<option value="${cat.id}">${cat.name}</option>`;
+                });
+            });
+
+        document.getElementById('category').addEventListener('change', function() {
+            const subcategorySelect = document.getElementById('subcategory');
+            subcategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
+            
+            const selectedCategory = categories.find(cat => cat.id == this.value);
+            if (selectedCategory && selectedCategory.subcategories) {
+                selectedCategory.subcategories.forEach(sub => {
+                    subcategorySelect.innerHTML += `<option value="${sub.id}">${sub.name}</option>`;
+                });
+            }
+        });
+
+        function addVerse() {
+            verseCount++;
+            const versesDiv = document.getElementById('verses');
+            const verseDiv = document.createElement('div');
+            verseDiv.className = 'verse';
+            verseDiv.id = `verse-${verseCount}`;
+            
+            verseDiv.innerHTML = `
+                <div class="main-verse">
+                    <label>Main Verse:</label>
+                    <textarea class="main-input" rows="2" placeholder="Enter main verse"></textarea>
+                </div>
+                <div class="sub-verses">
+                    <label>Sub Verses:</label>
+                </div>
+                <button type="button" onclick="addSubVerse(${verseCount})" class="add-btn">Add Sub Verse</button>
+                <button type="button" onclick="removeVerse(${verseCount})" class="remove-btn">Remove Verse</button>
+            `;
+            
+            versesDiv.appendChild(verseDiv);
+        }
+
+        function addSubVerse(verseId) {
+            const subVersesDiv = document.querySelector(`#verse-${verseId} .sub-verses`);
+            const subDiv = document.createElement('div');
+            subDiv.className = 'sub-verse';
+            subDiv.innerHTML = `
+                <textarea class="sub-input" rows="1" placeholder="Enter sub verse"></textarea>
+                <button type="button" onclick="this.parentElement.remove()" class="remove-btn">Remove</button>
+            `;
+            subVersesDiv.appendChild(subDiv);
+        }
+
+        function removeVerse(verseId) {
+            document.getElementById(`verse-${verseId}`).remove();
+        }
+
+        document.getElementById('poemForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const verses = [];
+            document.querySelectorAll('.verse').forEach(verseDiv => {
+                const mainText = verseDiv.querySelector('.main-input').value.trim();
+                if (mainText) {
+                    const subs = [];
+                    verseDiv.querySelectorAll('.sub-input').forEach(subInput => {
+                        const subText = subInput.value.trim();
+                        if (subText) subs.push(subText);
+                    });
+                    
+                    verses.push({
+                        main: mainText,
+                        subs: subs
+                    });
+                }
+            });
+
+            const formData = {
+                title: document.getElementById('title').value,
+                author: document.getElementById('author').value,
+                registered_by: document.getElementById('registered_by').value,
+                subcategory_id: document.getElementById('subcategory').value,
+                verses: verses
+            };
+
+            fetch('/api/submit-structured-poem', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Poem submitted successfully!');
+                    document.getElementById('poemForm').reset();
+                    document.getElementById('verses').innerHTML = '';
+                    verseCount = 0;
+                } else {
+                    alert('Error: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting poem');
+            });
+        });
+
+        // Add initial verse
+        addVerse();
+    </script>
+</body>
+</html>
