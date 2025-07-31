@@ -33,5 +33,7 @@ Route::middleware([
     Route::put('/admin/subcategories/{subcategory}', [App\Http\Controllers\AdminController::class, 'updateSubcategory'])->name('admin.subcategories.update');
     Route::get('/admin/poems', [App\Http\Controllers\PoemController::class, 'index'])->name('admin.poems');
     Route::get('/admin/poems/{poem}', [App\Http\Controllers\PoemController::class, 'show'])->name('admin.poems.show');
+    Route::get('/admin/poems/{poem}/edit', [App\Http\Controllers\PoemController::class, 'edit'])->name('admin.poems.edit');
     Route::put('/admin/poems/{poem}', [App\Http\Controllers\PoemController::class, 'update'])->name('admin.poems.update');
+    Route::patch('/admin/poems/{poem}/approve', [App\Http\Controllers\PoemController::class, 'approve'])->name('admin.poems.approve');
 });

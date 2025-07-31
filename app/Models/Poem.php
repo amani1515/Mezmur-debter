@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Poem extends Model
 {
-    protected $fillable = ['subcategory_id', 'title', 'author', 'registered_by', 'body', 'structure', 'is_structured'];
+    protected $fillable = ['subcategory_id', 'title', 'author', 'registered_by', 'body', 'structure', 'is_structured', 'status'];
 
     protected $casts = [
         'structure' => 'array',

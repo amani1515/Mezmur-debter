@@ -53,14 +53,25 @@
                         <div v-else v-for="poem in poems.data" :key="poem.id" class="p-4 border-b border-amber-200 last:border-b-0">
                             <div class="flex justify-between items-start">
                                 <div class="flex-1">
-                                    <h3 class="font-bold text-amber-900">{{ poem.title }}</h3>
-                                    <p class="text-sm text-amber-700 mt-1">{{ poem.author || 'Anonymous' }}</p>
+                                    <div class="flex items-center gap-2">
+                                        <h3 class="font-bold text-amber-900">{{ poem.title }}</h3>
+                                        <span v-if="poem.is_structured" class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Structured</span>
+                                        <span :class="poem.status === 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'" class="text-xs px-2 py-1 rounded-full capitalize">{{ poem.status }}</span>
+                                    </div>
+                                    <p class="text-sm text-amber-700 mt-1">Author: {{ poem.author || 'Anonymous' }}</p>
+                                    <p class="text-sm text-amber-700 mt-1">Registered by: {{ poem.registered_by || 'Anonymous' }}</p>
                                     <p class="text-xs text-amber-600 mt-1">{{ poem.subcategory.category.name }} > {{ poem.subcategory.name }}</p>
                                     <p class="text-xs text-amber-600 mt-1">{{ formatDate(poem.created_at) }}</p>
                                 </div>
                                 <div class="flex space-x-2 ml-2">
                                     <Link :href="route('admin.poems.show', poem.id)" class="bg-blue-500 text-white p-2 rounded text-xs">
                                         View
+                                    </Link>
+                                    <Link :href="route('admin.poems.edit', poem.id)" class="bg-amber-500 text-white p-2 rounded text-xs">
+                                        Edit
+                                    </Link>
+                                    <Link v-if="poem.status === 'pending'" :href="route('admin.poems.approve', poem.id)" method="patch" class="bg-green-500 text-white p-2 rounded text-xs">
+                                        Approve
                                     </Link>
                                 </div>
                             </div>
@@ -77,6 +88,7 @@
                                 <tr>
                                     <th class="px-4 py-3 text-left text-xs font-bold text-amber-900 uppercase tracking-wider">Title</th>
                                     <th class="px-4 py-3 text-left text-xs font-bold text-amber-900 uppercase tracking-wider">Author</th>
+                                    <th class="px-4 py-3 text-left text-xs font-bold text-amber-900 uppercase tracking-wider">Registered By</th>
                                     <th class="px-4 py-3 text-left text-xs font-bold text-amber-900 uppercase tracking-wider">Category</th>
                                     <th class="px-4 py-3 text-left text-xs font-bold text-amber-900 uppercase tracking-wider">Subcategory</th>
                                     <th class="px-4 py-3 text-left text-xs font-bold text-amber-900 uppercase tracking-wider">Created</th>
@@ -85,8 +97,15 @@
                             </thead>
                             <tbody class="bg-gradient-to-br from-yellow-50 to-amber-100 divide-y divide-amber-200">
                                 <tr v-for="poem in poems.data" :key="poem.id" class="hover:bg-gradient-to-r hover:from-yellow-200 hover:to-amber-300 transition-all">
-                                    <td class="px-4 py-3 text-sm font-bold text-amber-900">{{ poem.title }}</td>
+                                    <td class="px-4 py-3 text-sm font-bold text-amber-900">
+                                        <div class="flex items-center gap-2">
+                                            {{ poem.title }}
+                                            <span v-if="poem.is_structured" class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Structured</span>
+                                            <span :class="poem.status === 'approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'" class="text-xs px-2 py-1 rounded-full capitalize">{{ poem.status }}</span>
+                                        </div>
+                                    </td>
                                     <td class="px-4 py-3 text-sm text-amber-800">{{ poem.author || 'Anonymous' }}</td>
+                                    <td class="px-4 py-3 text-sm text-amber-800">{{ poem.registered_by || 'Anonymous' }}</td>
                                     <td class="px-4 py-3 text-sm text-amber-800">{{ poem.subcategory.category.name }}</td>
                                     <td class="px-4 py-3 text-sm text-amber-800">{{ poem.subcategory.name }}</td>
                                     <td class="px-4 py-3 text-sm text-amber-800">{{ formatDate(poem.created_at) }}</td>
@@ -94,6 +113,12 @@
                                         <div class="flex space-x-2">
                                             <Link :href="route('admin.poems.show', poem.id)" class="bg-blue-500 hover:bg-blue-600 text-white p-1 rounded text-xs transition-all" title="View Details">
                                                 View
+                                            </Link>
+                                            <Link :href="route('admin.poems.edit', poem.id)" class="bg-amber-500 hover:bg-amber-600 text-white p-1 rounded text-xs transition-all" title="Edit Poem">
+                                                Edit
+                                            </Link>
+                                            <Link v-if="poem.status === 'pending'" :href="route('admin.poems.approve', poem.id)" method="patch" class="bg-green-500 hover:bg-green-600 text-white p-1 rounded text-xs transition-all" title="Approve Poem">
+                                                Approve
                                             </Link>
                                         </div>
                                     </td>
