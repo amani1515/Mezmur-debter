@@ -1,29 +1,29 @@
 <template>
     <AdminLayout title="Admin Dashboard">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="p-6 lg:p-8 bg-blue-600 text-white">
-                <h1 class="text-2xl font-bold">
+        <div class="bg-gradient-to-br from-amber-600 via-yellow-600 to-orange-600 overflow-hidden shadow-2xl rounded-2xl border border-amber-400">
+            <div class="p-6 lg:p-8 bg-gradient-to-r from-amber-700 via-yellow-700 to-orange-700 text-white">
+                <h1 class="text-3xl font-bold drop-shadow-xl">
                     Ethiopian Orthodox Poem Management
                 </h1>
-                <p class="mt-4 text-blue-200 leading-relaxed">
+                <p class="mt-4 text-yellow-200 leading-relaxed text-lg">
                     Manage categories, subcategories, and poems submitted by users.
                 </p>
             </div>
 
-            <div class="bg-blue-50 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 p-6 lg:p-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
-                    <div class="text-lg font-semibold text-gray-900">Categories</div>
-                    <div class="mt-2 text-3xl font-bold text-blue-600">{{ stats.categories }}</div>
+            <div class="bg-gradient-to-br from-amber-500 via-yellow-500 to-orange-500 grid grid-cols-1 md:grid-cols-3 gap-8 p-8">
+                <div class="bg-gradient-to-br from-yellow-100 to-amber-200 p-8 rounded-2xl shadow-2xl border-2 border-amber-300 hover:shadow-3xl transition-all transform hover:-translate-y-2 hover:scale-105">
+                    <div class="text-xl font-bold text-amber-900 mb-2">Categories</div>
+                    <div class="text-5xl font-bold text-amber-800 drop-shadow-lg">{{ stats.categories }}</div>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-400">
-                    <div class="text-lg font-semibold text-gray-900">Subcategories</div>
-                    <div class="mt-2 text-3xl font-bold text-blue-500">{{ stats.subcategories }}</div>
+                <div class="bg-gradient-to-br from-amber-200 to-orange-300 p-8 rounded-2xl shadow-2xl border-2 border-orange-400 hover:shadow-3xl transition-all transform hover:-translate-y-2 hover:scale-105">
+                    <div class="text-xl font-bold text-orange-900 mb-2">Subcategories</div>
+                    <div class="text-5xl font-bold text-orange-800 drop-shadow-lg">{{ stats.subcategories }}</div>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-600">
-                    <div class="text-lg font-semibold text-gray-900">Poems</div>
-                    <div class="mt-2 text-3xl font-bold text-blue-700">{{ stats.poems }}</div>
+                <div class="bg-gradient-to-br from-orange-200 to-yellow-300 p-8 rounded-2xl shadow-2xl border-2 border-yellow-400 hover:shadow-3xl transition-all transform hover:-translate-y-2 hover:scale-105">
+                    <div class="text-xl font-bold text-yellow-900 mb-2">Poems</div>
+                    <div class="text-5xl font-bold text-yellow-800 drop-shadow-lg">{{ stats.poems }}</div>
                 </div>
             </div>
         </div>
