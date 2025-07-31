@@ -20,4 +20,10 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
+    Route::get('/admin/categories', [App\Http\Controllers\AdminController::class, 'categories'])->name('admin.categories');
+    Route::post('/admin/categories', [App\Http\Controllers\AdminController::class, 'storeCategory'])->name('admin.categories.store');
+    Route::put('/admin/categories/{category}', [App\Http\Controllers\AdminController::class, 'updateCategory'])->name('admin.categories.update');
+    Route::get('/admin/subcategories', [App\Http\Controllers\AdminController::class, 'subcategories'])->name('admin.subcategories');
+    Route::post('/admin/subcategories', [App\Http\Controllers\AdminController::class, 'storeSubcategory'])->name('admin.subcategories.store');
+    Route::put('/admin/subcategories/{subcategory}', [App\Http\Controllers\AdminController::class, 'updateSubcategory'])->name('admin.subcategories.update');
 });
