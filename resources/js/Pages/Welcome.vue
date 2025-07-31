@@ -1,13 +1,13 @@
 <template>
-    <div class="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-100">
+    <div class="min-h-screen relative" style="background-image: url('/images/backgrounds/welcome-background.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <!-- Background Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm"></div>
         <!-- Header -->
-        <header class="bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 shadow-2xl">
+        <header class="bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 shadow-2xl relative z-10">
             <div class="max-w-7xl mx-auto px-4 py-6">
                 <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div class="flex items-center space-x-4">
-                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-200 to-amber-300 rounded-full flex items-center justify-center shadow-lg border-4 border-yellow-300">
-                            <span class="text-amber-800 font-bold text-2xl">ደ</span>
-                        </div>
+                        <img src="/images/logos/dekikelogo.png" alt="Dekike Brhan Logo" class="w-16 h-16 object-contain drop-shadow-lg">
                         <div class="text-center sm:text-left">
                             <h1 class="text-2xl lg:text-3xl font-bold text-white drop-shadow-xl">ደቂቀ ብርሀን</h1>
                             <p class="text-yellow-200 text-sm lg:text-base">Dekike Brhan - Children of Light</p>
@@ -21,7 +21,7 @@
         </header>
 
         <!-- Hero Section -->
-        <section class="py-12 lg:py-20">
+        <section class="py-12 lg:py-20 relative z-10">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl lg:text-5xl font-bold text-amber-900 mb-6 drop-shadow-lg">
@@ -69,14 +69,14 @@
         </section>
 
         <!-- Poem Submission Form -->
-        <section class="py-12 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600">
+        <section class="py-12 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 relative z-10">
             <div class="max-w-4xl mx-auto px-4">
                 <div class="text-center mb-8">
                     <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4 drop-shadow-lg">Share Your Sacred Poetry</h3>
                     <p class="text-yellow-200 text-lg">Contribute to our spiritual heritage by sharing poems, hymns, or sacred writings</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-2xl shadow-2xl border-2 border-amber-300 p-6 lg:p-8">
+                <div class="bg-gradient-to-br from-yellow-50 to-amber-100 rounded-2xl shadow-2xl border-2 border-amber-300 p-6 lg:p-8 backdrop-blur-md bg-opacity-90">
                     <form @submit.prevent="submitStructuredPoem" class="space-y-6">
                         <!-- Success Message -->
                         <div v-if="successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-4">
@@ -251,12 +251,10 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-gradient-to-r from-amber-800 via-yellow-800 to-orange-800 text-white py-8">
+        <footer class="bg-gradient-to-r from-amber-800 via-yellow-800 to-orange-800 text-white py-8 relative z-10">
             <div class="max-w-7xl mx-auto px-4 text-center">
                 <div class="flex items-center justify-center space-x-3 mb-4">
-                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-200 to-amber-300 rounded-full flex items-center justify-center">
-                        <span class="text-amber-800 font-bold text-lg">ደ</span>
-                    </div>
+                    <img src="/images/logos/dekikelogo.png" alt="Dekike Brhan Logo" class="w-10 h-10 object-contain">
                     <h4 class="text-xl font-bold">ደቂቀ ብርሀን</h4>
                 </div>
                 <p class="text-yellow-200 mb-4">Preserving Ethiopian Orthodox spiritual heritage through sacred poetry</p>

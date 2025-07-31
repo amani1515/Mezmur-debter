@@ -1,61 +1,245 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ደቂቀ ብርሀን (Dekike Brhan) - Ethiopian Orthodox Poem Management System
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/images/logos/dekikelogo.png" alt="Dekike Brhan Logo" width="120" height="120">
 </p>
 
-## About Laravel
+<p align="center">
+  <strong>A sacred digital sanctuary for preserving Ethiopian Orthodox spiritual poetry</strong>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-10.x-red.svg" alt="Laravel">
+  <img src="https://img.shields.io/badge/Vue.js-3.x-green.svg" alt="Vue.js">
+  <img src="https://img.shields.io/badge/Inertia.js-1.x-purple.svg" alt="Inertia.js">
+  <img src="https://img.shields.io/badge/TailwindCSS-3.x-blue.svg" alt="TailwindCSS">
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📖 About
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Dekike Brhan** (Children of Light) is a comprehensive web application designed to preserve and manage Ethiopian Orthodox spiritual poetry. The platform serves as a bridge between generations, connecting the timeless wisdom of our ancestors with the hearts of today's faithful.
 
-## Learning Laravel
+### 🎯 Purpose
+- **Preserve** centuries-old Ethiopian Orthodox poems and hymns
+- **Share** spiritual heritage through digital accessibility
+- **Connect** communities through sacred poetry
+- **Prepare** for future Android app development
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 🏠 Public Features
+- **Beautiful Welcome Page** with background imagery and logo integration
+- **Poem Submission** without registration required
+- **Structured Verse System** with main verses and sub-verses
+- **Duplicate Prevention** with real-time title checking
+- **Mobile-First Design** optimized for 90% mobile users
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔐 Admin Dashboard
+- **Golden Theme** with Ethiopian Orthodox aesthetics
+- **User Management** with role-based access control
+- **Category Management** with CRUD operations
+- **Subcategory Management** with search and filtering
+- **Poem Management** with approval workflow
+- **Mobile-Responsive** design with collapsible sidebar
 
-## Laravel Sponsors
+### 📱 Advanced Functionality
+- **Search & Filter** across all management pages
+- **Pagination** for optimal performance
+- **Approval System** for quality control
+- **Structured Data** storage for Android app compatibility
+- **Real-time Validation** and feedback
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Technology Stack
 
-### Premium Partners
+- **Backend**: Laravel 10.x (PHP 8.1+)
+- **Frontend**: Vue.js 3.x with Composition API
+- **Bridge**: Inertia.js for SPA experience
+- **Styling**: TailwindCSS with custom golden theme
+- **Database**: MySQL/PostgreSQL
+- **Authentication**: Laravel Sanctum
+- **Notifications**: SweetAlert2
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 📋 Requirements
 
-## Contributing
+- PHP 8.1 or higher
+- Composer
+- Node.js 16+ and npm
+- MySQL 8.0+ or PostgreSQL 13+
+- Web server (Apache/Nginx)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🚀 Installation
 
-## Code of Conduct
+### 1. Clone Repository
+```bash
+git clone https://github.com/yourusername/poem-uploader.git
+cd poem-uploader
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Install Dependencies
+```bash
+# Install PHP dependencies
+composer install
 
-## Security Vulnerabilities
+# Install Node.js dependencies
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Environment Setup
+```bash
+# Copy environment file
+cp .env.example .env
 
-## License
+# Generate application key
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 4. Database Configuration
+Edit `.env` file with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=poem_uploader
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### 5. Database Migration
+```bash
+# Run migrations
+php artisan migrate
+
+# Seed default data (optional)
+php artisan db:seed
+```
+
+### 6. Build Assets
+```bash
+# Development build
+npm run dev
+
+# Production build
+npm run build
+```
+
+### 7. Start Development Server
+```bash
+php artisan serve
+```
+
+Visit `http://localhost:8000` to access the application.
+
+## 📁 Project Structure
+
+```
+poem-uploader/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── AdminController.php      # Admin dashboard logic
+│   │   ├── PoemController.php       # Poem management
+│   │   └── PublicController.php     # Public poem submission
+│   └── Models/
+│       ├── Category.php             # Category model
+│       ├── Subcategory.php          # Subcategory model
+│       └── Poem.php                 # Poem model with structured data
+├── database/migrations/             # Database schema
+├── resources/
+│   ├── js/
+│   │   ├── Layouts/
+│   │   │   └── AdminLayout.vue      # Admin layout with golden theme
+│   │   └── Pages/
+│   │       ├── Admin/               # Admin dashboard pages
+│   │       └── Welcome.vue          # Public welcome page
+│   └── css/
+└── public/images/                   # Logo and background images
+```
+
+## 🎨 Design Philosophy
+
+### Golden Theme
+The application uses a consistent golden/amber color scheme throughout, reflecting the sacred and traditional nature of Ethiopian Orthodox spirituality.
+
+### Mobile-First Approach
+With 90% mobile users in mind, the interface prioritizes:
+- **Card layouts** for mobile devices
+- **Responsive tables** for desktop
+- **Touch-friendly** controls and navigation
+- **Collapsible sidebar** for space efficiency
+
+## 📊 Database Schema
+
+### Categories
+- `id`, `name`, `created_at`, `updated_at`
+
+### Subcategories
+- `id`, `category_id`, `name`, `created_at`, `updated_at`
+
+### Poems
+- `id`, `title`, `author`, `registered_by`, `subcategory_id`
+- `structure` (JSON) - Hierarchical verse data
+- `status` (pending/approved)
+- `created_at`, `updated_at`
+
+## 🔧 Configuration
+
+### Default User Role
+New registrations default to admin role for initial setup:
+```php
+// In User model
+protected $attributes = [
+    'role' => 'admin',
+];
+```
+
+### Pagination Settings
+- **Subcategories**: 10 per page
+- **Poems**: Configurable in controller
+
+## 🚀 Deployment
+
+### Production Setup
+1. Set `APP_ENV=production` in `.env`
+2. Configure web server (Apache/Nginx)
+3. Set proper file permissions
+4. Enable HTTPS
+5. Configure database for production
+6. Run `npm run build` for optimized assets
+
+### Recommended Server Configuration
+- **PHP**: 8.1+ with required extensions
+- **Memory**: 512MB minimum
+- **Storage**: SSD recommended
+- **SSL**: Required for production
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Ethiopian Orthodox Church** for spiritual inspiration
+- **Laravel Community** for excellent framework
+- **Vue.js Team** for reactive frontend capabilities
+- **Contributors** who help preserve our spiritual heritage
+
+## 📞 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Contact the development team
+- Join our community discussions
+
+---
+
+<p align="center">
+  <strong>Built with ❤️ for the Ethiopian Orthodox community</strong><br>
+  <em>Preserving spiritual heritage through technology</em>
+</p>
