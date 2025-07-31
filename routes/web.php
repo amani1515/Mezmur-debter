@@ -19,4 +19,5 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
 });

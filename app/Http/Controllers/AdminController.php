@@ -19,4 +19,11 @@ class AdminController extends Controller
             ]
         ]);
     }
+
+    public function users()
+    {
+        return Inertia::render('Admin/Users', [
+            'users' => \App\Models\User::select('id', 'name', 'email', 'role', 'created_at')->get()
+        ]);
+    }
 }
